@@ -1,0 +1,44 @@
+{% load static %}
+{% load bootstrap4 %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-top:0px">
+    <a class="navbar-brand" href="/">Dairy Management</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'allcustomer'%}">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'Customer_page'%}">Customer Page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'customer_milk_category'%}">Milk category</a>
+            </li>
+            {% if user.is_superuser %}
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Admin</a>
+            </li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile'%}">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'update-profile' %}">Edit Profile</a>
+            </li>
+            <li style="font-family: 'Dosis', sans-serif;">
+                <a href="{%url 'login'%}">Logout</a>
+            </li>
+
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="/accounts/login/">Sign In</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
